@@ -3,8 +3,10 @@ import api from '../../api/axios';
 import toast from 'react-hot-toast';
 import { Plus, Trash2, X, Shield, Key } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 export default function Users() {
+  const { t } = useTranslation();
   const { user: currentUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,9 +75,9 @@ export default function Users() {
     <div className="space-y-6">
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-medium text-gray-900">System Users</h2>
+          <h2 className="text-lg font-medium text-gray-900">{t('users.title')}</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Administrators who have access to manage the system.
+            {t('users.subtitle')}
           </p>
         </div>
         <div className="mt-4 sm:mt-0">
@@ -84,7 +86,7 @@ export default function Users() {
             className="flex items-center justify-center rounded-md border border-transparent bg-cbe-purple px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cbe-dark-purple focus:outline-none focus:ring-2 focus:ring-cbe-purple focus:ring-offset-2 sm:w-auto"
           >
             <Plus className="mr-2 h-4 w-4" />
-            Add Admin User
+            {t('users.addBtn')}
           </button>
         </div>
       </div>
@@ -98,9 +100,9 @@ export default function Users() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email / Account</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roles</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Linked Employee ID</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('users.tableAccount')}</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('users.tableRoles')}</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('users.tableLinkedId')}</th>
                   <th scope="col" className="relative px-6 py-3"><span className="sr-only">Actions</span></th>
                 </tr>
               </thead>
@@ -157,38 +159,38 @@ export default function Users() {
             <div className="relative z-10 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 border-t-4 border-cbe-purple">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">Register New Admin</h3>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">{t('users.addTitle')}</h3>
                   <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-500"><X size={20} /></button>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Email Address <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-medium text-gray-700">{t('users.email')} <span className="text-red-500">*</span></label>
                     <input type="email" name="email" required value={formData.email} onChange={handleInputChange}
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Password <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-medium text-gray-700">{t('users.password')} <span className="text-red-500">*</span></label>
                     <input type="password" name="password" required value={formData.password} onChange={handleInputChange}
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                     />
-                    <p className="text-xs text-gray-500 mt-1">Must be at least 6 characters, with 1 uppercase and 1 lowercase letter.</p>
+                    <p className="text-xs text-gray-500 mt-1">{t('users.passwordHint')}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Linked Employee ID <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-medium text-gray-700">{t('users.linkedId')} <span className="text-red-500">*</span></label>
                     <input type="text" name="employeeId" required value={formData.employeeId} onChange={handleInputChange} placeholder="e.g. EMP001"
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                     />
-                    <p className="text-xs text-gray-500 mt-1">Must match an existing employee's ID in the system.</p>
+                    <p className="text-xs text-gray-500 mt-1">{t('users.linkedIdHint')}</p>
                   </div>
                   
                   <div className="pt-4 flex justify-end gap-3">
                     <button type="button" onClick={() => setIsModalOpen(false)} className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
-                      Cancel
+                      {t('users.cancel')}
                     </button>
                     <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cbe-purple hover:bg-cbe-dark-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cbe-purple">
-                      Register User
+                      {t('users.register')}
                     </button>
                   </div>
                 </form>

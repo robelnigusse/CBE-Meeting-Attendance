@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
 import { Plus, Edit2, Trash2, X, Upload } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Employees() {
+  const { t } = useTranslation();
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -138,9 +140,9 @@ export default function Employees() {
     <div className="space-y-6">
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-medium text-gray-900">Employees</h2>
+          <h2 className="text-lg font-medium text-gray-900">{t('employees.title')}</h2>
           <p className="mt-1 text-sm text-gray-500">
-            A list of all employees eligible for meeting attendance.
+            {t('employees.subtitle')}
           </p>
         </div>
         <div className="mt-4 sm:mt-0">
@@ -149,7 +151,7 @@ export default function Employees() {
             className="flex items-center justify-center rounded-md border border-transparent bg-cbe-purple px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cbe-dark-purple focus:outline-none focus:ring-2 focus:ring-cbe-purple focus:ring-offset-2 sm:w-auto"
           >
             <Plus className="mr-2 h-4 w-4" />
-            Add Employee
+            {t('employees.addBtn')}
           </button>
         </div>
       </div>
@@ -163,9 +165,9 @@ export default function Employees() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employee</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Division / Dept</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('employees.tableEmp')}</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('employees.tableDiv')}</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('employees.tableContact')}</th>
                   <th scope="col" className="relative px-6 py-3"><span className="sr-only">Actions</span></th>
                 </tr>
               </thead>
@@ -196,7 +198,7 @@ export default function Employees() {
                 {employees.length === 0 && (
                   <tr>
                     <td colSpan="4" className="px-6 py-10 text-center text-gray-500">
-                      No employees found. Add one to get started.
+                      {t('employees.noEmp')}
                     </td>
                   </tr>
                 )}
@@ -216,7 +218,7 @@ export default function Employees() {
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 border-t-4 border-cbe-purple">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                    {editingId ? 'Edit Employee' : 'Add New Employee'}
+                    {editingId ? t('employees.editTitle') : t('employees.addTitle')}
                   </h3>
                   <button onClick={closeModal} className="text-gray-400 hover:text-gray-500">
                     <X size={20} />
@@ -226,37 +228,37 @@ export default function Employees() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-sm font-medium text-gray-700">Employee ID <span className="text-red-500">*</span></label>
+                      <label className="block text-sm font-medium text-gray-700">{t('employees.empId')} <span className="text-red-500">*</span></label>
                       <input type="text" name="employeeId" required value={formData.employeeId} onChange={handleInputChange} disabled={!!editingId}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm disabled:bg-gray-100" 
                       />
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-sm font-medium text-gray-700">Full Name <span className="text-red-500">*</span></label>
+                      <label className="block text-sm font-medium text-gray-700">{t('employees.fullName')} <span className="text-red-500">*</span></label>
                       <input type="text" name="fullName" required value={formData.fullName} onChange={handleInputChange}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                       />
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-sm font-medium text-gray-700">Job Title</label>
+                      <label className="block text-sm font-medium text-gray-700">{t('employees.jobTitle')}</label>
                       <input type="text" name="jobTitle" value={formData.jobTitle} onChange={handleInputChange}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                       />
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+                      <label className="block text-sm font-medium text-gray-700">{t('employees.phone')}</label>
                       <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                       />
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-sm font-medium text-gray-700">Division</label>
+                      <label className="block text-sm font-medium text-gray-700">{t('employees.division')}</label>
                       <input type="text" name="division" value={formData.division} onChange={handleInputChange}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                       />
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-sm font-medium text-gray-700">Department</label>
+                      <label className="block text-sm font-medium text-gray-700">{t('employees.department')}</label>
                       <input type="text" name="department" value={formData.department} onChange={handleInputChange}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cbe-purple focus:border-cbe-purple sm:text-sm" 
                       />
@@ -285,10 +287,10 @@ export default function Employees() {
                   
                   <div className="pt-4 flex justify-end gap-3">
                     <button type="button" onClick={closeModal} className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
-                      Cancel
+                      {t('employees.cancel')}
                     </button>
                     <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cbe-purple hover:bg-cbe-dark-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cbe-purple">
-                      Save Employee
+                      {t('employees.save')}
                     </button>
                   </div>
                 </form>

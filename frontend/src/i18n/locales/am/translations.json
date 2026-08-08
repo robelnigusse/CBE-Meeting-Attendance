@@ -1,0 +1,82 @@
+{
+  "kiosk": {
+    "title": "የስብሰባ ተሳትፎ መመዝገቢያ",
+    "subtitle": "የኢትዮጵያ ንግድ ባንክ",
+    "employeeIdLabel": "የሰራተኛ መለያ ቁጥር (ID)",
+    "placeholder": "ለምሳሌ EMP001",
+    "button": "ተሳትፎ መዝግብ",
+    "buttonProcessing": "በማስኬድ ላይ...",
+    "success": "በተሳካ ሁኔታ ተመዝግቧል! ወደ ስብሰባው መግባት ይችላሉ።",
+    "error": "ተሳትፎን መመዝገብ አልተቻለም። እባክዎ እንደገና ይሞክሩ ወይም ድጋፍ ሰጪን ያነጋግሩ።",
+    "adminPortal": "የአስተዳዳሪ ገጽ"
+  },
+  "login": {
+    "backToKiosk": "ወደ መመዝገቢያ ይመለሱ",
+    "title": "የአስተዳዳሪ ገጽ",
+    "subtitle": "ስብሰባዎችን እና ተሳታፊዎችን ለማስተዳደር ይግቡ",
+    "emailLabel": "የኢሜይል አድራሻ",
+    "passwordLabel": "የይለፍ ቃል",
+    "button": "ግባ",
+    "buttonLoading": "በመግባት ላይ...",
+    "success": "በተሳካ ሁኔታ ገብተዋል"
+  },
+  "layout": {
+    "dashboard": "ዳሽቦርድ",
+    "employees": "ሰራተኞች",
+    "users": "የስርዓት አስተዳዳሪዎች",
+    "welcome": "እንኳን ደህና መጡ፣",
+    "logout": "ውጣ",
+    "title": "የኢትዮጵያ ንግድ ባንክ (CBE) አስተዳዳሪ"
+  },
+  "dashboard": {
+    "totalEmployees": "አጠቃላይ ሰራተኞች",
+    "todayAttendance": "የዛሬ ተሳትፎ",
+    "morning": "ጠዋት (ከ 6፡00 ሰዓት በፊት)",
+    "afternoon": "ከሰዓት (ከ 6፡00 ሰዓት በኋላ)",
+    "todayAttendees": "የዛሬ ተሳታፊዎች",
+    "employee": "ሰራተኛ",
+    "dateAndTime": "ቀን እና ሰዓት",
+    "status": "ሁኔታ",
+    "present": "ተገኝቷል",
+    "noAttendees": "ለዛሬ የተመዘገበ ተሳታፊ የለም።",
+    "exportReports": "ሪፖርት አውርድ",
+    "csv": "የ CSV ሪፖርት",
+    "excel": "የ Excel ሪፖርት",
+    "pdf": "የ PDF ሪፖርት"
+  },
+  "employees": {
+    "title": "ሰራተኞች",
+    "subtitle": "በስብሰባው ላይ ለመሳተፍ ብቁ የሆኑ ሁሉም ሰራተኞች ዝርዝር።",
+    "addBtn": "ሰራተኛ መዝግበብ",
+    "tableEmp": "ሰራተኛ",
+    "tableDiv": "ዲቪዥን / ዲፓርትመንት",
+    "tableContact": "አድራሻ",
+    "noEmp": "ምንም ሰራተኛ አልተገኘም። አዲስ ሰራተኛ ያክሉ።",
+    "editTitle": "የሰራተኛ መረጃ አስተካክል",
+    "addTitle": "አዲስ ሰራተኛ መዝግበብ",
+    "empId": "የሰራተኛ መለያ ቁጥር (ID)",
+    "fullName": "ሙሉ ስም",
+    "jobTitle": "የስራ መደብ",
+    "phone": "ስልክ ቁጥር",
+    "division": "ዲቪዥን",
+    "department": "ዲፓርትመንት",
+    "cancel": "ሰርዝ",
+    "save": "መዝግብ"
+  },
+  "users": {
+    "title": "የስርዓት አስተዳዳሪዎች",
+    "subtitle": "ስርዓቱን ለማስተዳደር መዳረሻ ያላቸው አስተዳዳሪዎች።",
+    "addBtn": "አስተዳዳሪ መዝግበብ",
+    "tableAccount": "ኢሜይል / መለያ",
+    "tableRoles": "የኃላፊነት ደረጃ",
+    "tableLinkedId": "የተገናኘ የሰራተኛ መለያ",
+    "addTitle": "አዲስ አስተዳዳሪ መዝግብ",
+    "email": "የኢሜይል አድራሻ",
+    "password": "የይለፍ ቃል",
+    "passwordHint": "ቢያንስ 6 ሆሄያት፣ 1 አቢይ (Capital) እና 1 ንዑስ (Small) ፊደል መያዝ አለበት።",
+    "linkedId": "የተገናኘ የሰራተኛ መለያ ቁጥር (ID)",
+    "linkedIdHint": "በስርዓቱ ውስጥ ካለ የሰራተኛ መለያ ቁጥር ጋር መዛመድ አለበት።",
+    "cancel": "ሰርዝ",
+    "register": "አስተዳዳሪ መዝግብ"
+  }
+}

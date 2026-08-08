@@ -3,8 +3,11 @@ import api from '../../api/axios';
 import toast from 'react-hot-toast';
 import { LogIn, UserCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../../components/LanguageSelector';
 
 export default function Kiosk() {
+  const { t } = useTranslation();
   const [employeeId, setEmployeeId] = useState('');
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // 'success' or 'error'
@@ -20,14 +23,14 @@ export default function Kiosk() {
       // API call to take attendance
       const response = await api.post('/attendance', { employeeId });
       setStatus('success');
-      toast.success(response.data.message || 'Attendance registered successfully!');
+      toast.success(response.data.message || t('kiosk.success'));
       setEmployeeId('');
       
       // Reset status after a few seconds
       setTimeout(() => setStatus(null), 3000);
     } catch (error) {
       setStatus('error');
-      toast.error(error.response?.data?.message || 'Failed to register attendance. Please check your ID.');
+      toast.error(error.response?.data?.message || t('kiosk.error'));
     } finally {
       setLoading(false);
     }
@@ -36,19 +39,22 @@ export default function Kiosk() {
   return (
     <div className="min-h-screen bg-cbe-light flex flex-col justify-center items-center p-4 relative">
       {/* Admin Login Link */}
-      <button 
-        onClick={() => navigate('/login')}
-        className="absolute top-6 right-6 flex items-center gap-2 text-cbe-purple hover:text-cbe-dark-purple font-medium"
-      >
-        <LogIn size={20} />
-        <span>Admin Portal</span>
-      </button>
+      <div className="absolute top-6 right-6 flex items-center gap-4">
+        <LanguageSelector />
+        <button 
+          onClick={() => navigate('/login')}
+          className="flex items-center gap-2 text-cbe-purple hover:text-cbe-dark-purple font-medium"
+        >
+          <LogIn size={20} />
+          <span>{t('kiosk.adminPortal')}</span>
+        </button>
+      </div>
 
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
         {/* Header */}
         <div className="bg-cbe-purple p-8 text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Meeting Attendance</h1>
-          <p className="text-cbe-gold font-medium">Commercial Bank of Ethiopia</p>
+          <h1 className="text-3xl font-bold text-white mb-2">{t('kiosk.title')}</h1>
+          <p className="text-cbe-gold font-medium">{t('kiosk.subtitle')}</p>
         </div>
 
         {/* Body */}
@@ -56,7 +62,7 @@ export default function Kiosk() {
           <form onSubmit={handleCheckIn} className="space-y-6">
             <div>
               <label htmlFor="employeeId" className="block text-sm font-medium text-gray-700 mb-2">
-                Employee ID
+                {t('kiosk.employeeIdLabel')}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -68,7 +74,7 @@ export default function Kiosk() {
                   value={employeeId}
                   onChange={(e) => setEmployeeId(e.target.value)}
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-cbe-purple focus:border-cbe-purple text-lg"
-                  placeholder="e.g. EMP001"
+                  placeholder={t('kiosk.placeholder')}
                   required
                 />
               </div>
@@ -81,19 +87,19 @@ export default function Kiosk() {
                 ${loading || !employeeId ? 'bg-gray-400 cursor-not-allowed' : 'bg-cbe-gold hover:bg-[#d18f23] hover:shadow-lg'} 
                 transition-all duration-200`}
             >
-              {loading ? 'Processing...' : 'Register Attendance'}
+              {loading ? t('kiosk.buttonProcessing') : t('kiosk.button')}
             </button>
           </form>
 
           {/* Status Messages */}
           {status === 'success' && (
             <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200 text-center text-green-700">
-              Attendance registered successfully! You may enter the meeting.
+              {t('kiosk.success')}
             </div>
           )}
           {status === 'error' && (
             <div className="mt-6 p-4 bg-red-50 rounded-lg border border-red-200 text-center text-red-700">
-              Error registering attendance. Please try again or contact support.
+              {t('kiosk.error')}
             </div>
           )}
         </div>

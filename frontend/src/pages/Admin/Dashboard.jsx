@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import api from '../../api/axios';
 import { Users, UserCheck, Sun, Moon, Download } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
@@ -51,10 +53,10 @@ export default function Dashboard() {
   }
 
   const statCards = [
-    { title: 'Total Employees', value: stats?.totalEmployees || 0, icon: Users, color: 'text-blue-600', bg: 'bg-blue-100' },
-    { title: "Today's Attendance", value: stats?.todayAttendance || 0, icon: UserCheck, color: 'text-green-600', bg: 'bg-green-100' },
-    { title: 'Morning (Before 12 PM)', value: stats?.morningAttendance || 0, icon: Sun, color: 'text-amber-500', bg: 'bg-amber-100' },
-    { title: 'Afternoon (After 12 PM)', value: stats?.afternoonAttendance || 0, icon: Moon, color: 'text-cbe-purple', bg: 'bg-purple-100' },
+    { title: t('dashboard.totalEmployees'), value: stats?.totalEmployees || 0, icon: Users, color: 'text-blue-600', bg: 'bg-blue-100' },
+    { title: t('dashboard.todayAttendance'), value: stats?.todayAttendance || 0, icon: UserCheck, color: 'text-green-600', bg: 'bg-green-100' },
+    { title: t('dashboard.morning'), value: stats?.morningAttendance || 0, icon: Sun, color: 'text-amber-500', bg: 'bg-amber-100' },
+    { title: t('dashboard.afternoon'), value: stats?.afternoonAttendance || 0, icon: Moon, color: 'text-cbe-purple', bg: 'bg-purple-100' },
   ];
 
   return (
@@ -88,14 +90,14 @@ export default function Dashboard() {
       {/* Export Section & Recent Attendees */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-white shadow rounded-lg p-6 border border-gray-100 lg:col-span-2">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">Today's Attendees</h2>
+          <h2 className="text-lg font-medium text-gray-900 mb-4">{t('dashboard.todayAttendees')}</h2>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employee</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date & Time</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('dashboard.employee')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('dashboard.dateAndTime')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('dashboard.status')}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -112,7 +114,7 @@ export default function Dashboard() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Present
+                          {t('dashboard.present')}
                         </span>
                       </td>
                     </tr>
@@ -120,7 +122,7 @@ export default function Dashboard() {
                 ) : (
                   <tr>
                     <td colSpan="3" className="px-6 py-10 text-center text-sm text-gray-500">
-                      No attendees found for today.
+                      {t('dashboard.noAttendees')}
                     </td>
                   </tr>
                 )}
@@ -131,28 +133,28 @@ export default function Dashboard() {
 
         {/* Actions Sidebar */}
         <div className="bg-white shadow rounded-lg p-6 border border-gray-100">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Export Today's Reports</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">{t('dashboard.exportReports')}</h3>
           <div className="space-y-3">
             <button
               onClick={() => handleExport('csv')}
               disabled={exporting}
               className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cbe-purple"
             >
-              <Download size={16} /> CSV Report
+              <Download size={16} /> {t('dashboard.csv')}
             </button>
             <button
               onClick={() => handleExport('excel')}
               disabled={exporting}
               className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >
-              <Download size={16} /> Excel Report
+              <Download size={16} /> {t('dashboard.excel')}
             </button>
             <button
               onClick={() => handleExport('pdf')}
               disabled={exporting}
               className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             >
-              <Download size={16} /> PDF Report
+              <Download size={16} /> {t('dashboard.pdf')}
             </button>
           </div>
         </div>

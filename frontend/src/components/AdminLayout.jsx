@@ -10,10 +10,13 @@ import {
   X,
   Plus
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
+import LanguageSelector from './LanguageSelector';
 
 export default function AdminLayout() {
+  const { t } = useTranslation();
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -100,9 +103,9 @@ export default function AdminLayout() {
   };
 
   const navItems = [
-    { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Employees', path: '/admin/employees', icon: Users, roles: ['SuperAdmin'] },
-    { name: 'System Users', path: '/admin/users', icon: UserCog, roles: ['Admin', 'SuperAdmin'] },
+    { name: t('layout.dashboard'), path: '/admin/dashboard', icon: LayoutDashboard },
+    { name: t('layout.employees'), path: '/admin/employees', icon: Users, roles: ['SuperAdmin'] },
+    { name: t('layout.users'), path: '/admin/users', icon: UserCog, roles: ['Admin', 'SuperAdmin'] },
   ];
 
   const filteredNav = navItems.filter(item => !item.roles || item.roles.some(r => user?.roles?.includes(r)));
@@ -123,7 +126,7 @@ export default function AdminLayout() {
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="flex items-center justify-between h-16 px-6 bg-cbe-dark-purple">
-          <span className="text-xl font-bold text-white tracking-wide">CBE Admin</span>
+          <span className="text-xl font-bold text-white tracking-wide">{t('layout.title')}</span>
           <button className="lg:hidden text-gray-300 hover:text-white" onClick={() => setIsSidebarOpen(false)}>
             <X size={20} />
           </button>
@@ -159,7 +162,7 @@ export default function AdminLayout() {
             />
           </div>
           <div className="min-w-0">
-            <p className="text-sm text-gray-300">Welcome,</p>
+            <p className="text-sm text-gray-300">{t('layout.welcome')}</p>
             <p className="font-medium truncate" title={user?.email}>{user?.email}</p>
           </div>
         </div>
@@ -198,17 +201,18 @@ export default function AdminLayout() {
               <Menu className="h-6 w-6" />
             </button>
             <h1 className="ml-4 lg:ml-0 text-xl font-semibold text-gray-800">
-              {filteredNav.find(n => location.pathname.startsWith(n.path))?.name || 'Dashboard'}
+              {filteredNav.find(n => location.pathname.startsWith(n.path))?.name || t('layout.dashboard')}
             </h1>
           </div>
           
-          <div>
+          <div className="flex items-center gap-4">
+            <LanguageSelector />
             <button
               onClick={handleLogout}
               className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-red-600 transition-colors"
             >
               <LogOut size={18} />
-              <span className="hidden sm:inline">Logout</span>
+              <span className="hidden sm:inline">{t('layout.logout')}</span>
             </button>
           </div>
         </header>

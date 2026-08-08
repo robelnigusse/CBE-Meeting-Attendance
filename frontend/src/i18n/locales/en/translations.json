@@ -1,0 +1,82 @@
+{
+  "kiosk": {
+    "title": "Meeting Attendance",
+    "subtitle": "Commercial Bank of Ethiopia",
+    "employeeIdLabel": "Employee ID",
+    "placeholder": "e.g. EMP001",
+    "button": "Register Attendance",
+    "buttonProcessing": "Processing...",
+    "success": "Attendance registered successfully! You may enter the meeting.",
+    "error": "Error registering attendance. Please try again or contact support.",
+    "adminPortal": "Admin Portal"
+  },
+  "login": {
+    "backToKiosk": "Back to Kiosk",
+    "title": "Admin Portal",
+    "subtitle": "Sign in to manage meetings and attendees",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "button": "Sign In",
+    "buttonLoading": "Signing in...",
+    "success": "Logged in successfully"
+  },
+  "layout": {
+    "dashboard": "Dashboard",
+    "employees": "Employees",
+    "users": "System Users",
+    "welcome": "Welcome,",
+    "logout": "Logout",
+    "title": "CBE Admin"
+  },
+  "dashboard": {
+    "totalEmployees": "Total Employees",
+    "todayAttendance": "Today's Attendance",
+    "morning": "Morning (Before 12 PM)",
+    "afternoon": "Afternoon (After 12 PM)",
+    "todayAttendees": "Today's Attendees",
+    "employee": "Employee",
+    "dateAndTime": "Date & Time",
+    "status": "Status",
+    "present": "Present",
+    "noAttendees": "No attendees found for today.",
+    "exportReports": "Export Reports",
+    "csv": "CSV Report",
+    "excel": "Excel Report",
+    "pdf": "PDF Report"
+  },
+  "employees": {
+    "title": "Employees",
+    "subtitle": "A list of all employees eligible for meeting attendance.",
+    "addBtn": "Add Employee",
+    "tableEmp": "Employee",
+    "tableDiv": "Division / Dept",
+    "tableContact": "Contact",
+    "noEmp": "No employees found. Add one to get started.",
+    "editTitle": "Edit Employee",
+    "addTitle": "Add New Employee",
+    "empId": "Employee ID",
+    "fullName": "Full Name",
+    "jobTitle": "Job Title",
+    "phone": "Phone Number",
+    "division": "Division",
+    "department": "Department",
+    "cancel": "Cancel",
+    "save": "Save Employee"
+  },
+  "users": {
+    "title": "System Users",
+    "subtitle": "Administrators who have access to manage the system.",
+    "addBtn": "Add Admin User",
+    "tableAccount": "Email / Account",
+    "tableRoles": "Roles",
+    "tableLinkedId": "Linked Employee ID",
+    "addTitle": "Register New Admin",
+    "email": "Email Address",
+    "password": "Password",
+    "passwordHint": "Must be at least 6 characters, with 1 uppercase and 1 lowercase letter.",
+    "linkedId": "Linked Employee ID",
+    "linkedIdHint": "Must match an existing employee's ID in the system.",
+    "cancel": "Cancel",
+    "register": "Register User"
+  }
+}
