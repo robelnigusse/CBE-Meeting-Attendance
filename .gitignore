@@ -1,0 +1,96 @@
+# ==========================================
+# .NET / ASP.NET Core
+# ==========================================
+
+**/bin/
+**/obj/
+
+.vs/
+.vscode/
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+**/packages/
+*.nupkg
+*.snupkg
+
+# Test results
+**/TestResults/
+*.trx
+
+# Logs
+*.log
+**/logs/
+
+# ==========================================
+# ASP.NET / Environment / Secrets
+# ==========================================
+
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# React / Node
+# ==========================================
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+frontend/.next/
+frontend/out/
+
+frontend/.cache/
+frontend/.npm/
+frontend/.yarn/
+frontend/.pnpm-store/
+
+frontend/coverage/
+
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/pnpm-debug.log*
+
+# ==========================================
+# IDE
+# ==========================================
+
+.idea/
+.vscode/
+
+# ==========================================
+# Docker
+# ==========================================
+
+**/.dockerignore
+
+# ==========================================
+# Git
+# ==========================================
+
+.git/
+
+# ==========================================
+# OS files
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Temporary files
+# ==========================================
+
+*.tmp
+*.temp
+*.swp
+*.swo

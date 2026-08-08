@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --cbe-purple: #910096; /* From CBE website */
+  --cbe-gold: #e8a029; /* From CBE website */
+  --cbe-white: #ffffff;
+  --cbe-light-gray: #f9f9f9;
+  --cbe-dark-purple: #6a006e;
+}
+
+@theme {
+  --color-cbe-purple: #910096;
+  --color-cbe-gold: #e8a029;
+  --color-cbe-light: #f9f9f9;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--cbe-light-gray);
+  color: #333;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}

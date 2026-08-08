@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+
+  sqldb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: cbe_meeting_db
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "CbeMeetingPass123!"
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: [ "CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'CbeMeetingPass123!' -C -Q 'SELECT 1' || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  api:
+    build:
+      context: ./CbeMeetingAttendance
+      dockerfile: Dockerfile
+    container_name: cbebackend
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqldb;Database=CbeMeetingAttendance;User Id=sa;Password=CbeMeetingPass123!;TrustServerCertificate=True;"
+    ports:
+      - "8080:8080"
+    depends_on:
+      sqldb:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cbefrontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api
