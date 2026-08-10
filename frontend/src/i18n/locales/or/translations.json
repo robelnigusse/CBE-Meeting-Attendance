@@ -1,0 +1,82 @@
+{
+  "kiosk": {
+    "title": "Hirmaannaa Walgahii",
+    "subtitle": "Baankii Daldala Itoophiyaa",
+    "employeeIdLabel": "Waraqaa Eenyummaa (ID) Hojjetaa",
+    "placeholder": "fkn. EMP001",
+    "button": "Hirmaannaa Galmeessi",
+    "buttonProcessing": "Adeemsisamaa jira...",
+    "success": "Hirmaannaan milkiin galmaa'eera! Walgahii seenuu dandeessa.",
+    "error": "Hirmaannaa galmeessuu irratti dogoggorri uumameera. Irra deebi'ii yaali ykn deeggarsa qunnami.",
+    "adminPortal": "Poortaalii Bulchaa"
+  },
+  "login": {
+    "backToKiosk": "Gara Kioskitti Deebi'i",
+    "title": "Poortaalii Bulchaa",
+    "subtitle": "Walgahii fi hirmaattota bulchuuf seenaa",
+    "emailLabel": "Teessoo Imeelii",
+    "passwordLabel": "Jecha Iccitii",
+    "button": "Seeni",
+    "buttonLoading": "Seenaa jira...",
+    "success": "Milkiin seenteetta"
+  },
+  "layout": {
+    "dashboard": "Daashboordii",
+    "employees": "Hojjettoota",
+    "users": "Fayyadamtota Sirnichaa",
+    "welcome": "Baga nagaan dhuftan,",
+    "logout": "Ba'i",
+    "title": "Bulchaa BDI (CBE Admin)"
+  },
+  "dashboard": {
+    "totalEmployees": "Ida'ama Hojjettootaa",
+    "todayAttendance": "Hirmaannaa Har'aa",
+    "morning": "Ganama (Waaree Dura)",
+    "afternoon": "Waaree Booda",
+    "todayAttendees": "Hirmaattota Har'aa",
+    "employee": "Hojjetaa",
+    "dateAndTime": "Guyyaa fi Sa'aatii",
+    "status": "Haala",
+    "present": "Argameera",
+    "noAttendees": "Har'aaf hirmaataan hin argamne.",
+    "exportReports": "Gabaasa Baasi (Export)",
+    "csv": "Gabaasa CSV",
+    "excel": "Gabaasa Excel",
+    "pdf": "Gabaasa PDF"
+  },
+  "employees": {
+    "title": "Hojjettoota",
+    "subtitle": "Tarree hojjettoota walgahiif ulaagaa guutan hunda.",
+    "addBtn": "Hojjetaa Ida'i",
+    "tableEmp": "Hojjetaa",
+    "tableDiv": "Kutaa / Damee",
+    "tableContact": "Quunnamtii",
+    "noEmp": "Hojjetaan hin argamne. Eegaluuf tokko ida'i.",
+    "editTitle": "Hojjetaa Sirreessi",
+    "addTitle": "Hojjetaa Haaraa Ida'i",
+    "empId": "ID Hojjetaa",
+    "fullName": "Maqaa Guutuu",
+    "jobTitle": "Gahee Hojii",
+    "phone": "Lakkoofsa Bilbilaa",
+    "division": "Kutaa Hojii",
+    "department": "Damee",
+    "cancel": "Haqa",
+    "save": "Hojjetaa Galmeessi"
+  },
+  "users": {
+    "title": "Fayyadamtota Sirnichaa",
+    "subtitle": "Bulchitoota sirnicha bulchuuf hayyama qaban.",
+    "addBtn": "Bulchaa Ida'i",
+    "tableAccount": "Imeelii / Herrega",
+    "tableRoles": "Gahee",
+    "tableLinkedId": "ID Hojjetaa Walqabate",
+    "addTitle": "Bulchaa Haaraa Galmeessi",
+    "email": "Teessoo Imeelii",
+    "password": "Jecha Iccitii",
+    "passwordHint": "Yoo xiqqaate arfiilee 6, qubee guddaa 1 fi xiqqa 1 qabaachuu qaba.",
+    "linkedId": "ID Hojjetaa Walqabate",
+    "linkedIdHint": "ID hojjetaa sirnicha keessa jiru waliin tokko ta'uu qaba.",
+    "cancel": "Haqa",
+    "register": "Fayyadamaa Galmeessi"
+  }
+}
