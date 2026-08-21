@@ -3,6 +3,7 @@ using CbeMeetingAttendance.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using CbeMeetingAttendance.Data;
 
 namespace CbeMeetingAttendance.Controllers
 {
@@ -33,6 +34,14 @@ namespace CbeMeetingAttendance.Controllers
         }
 
 
+        [AllowAnonymous]
+        [HttpGet("RSAPublicKey")]
+        public IActionResult GetRSAPublicKey()
+        {
+            var publicKey = RSAHelper.GetPublicKey();
+
+            return Ok(new { Key = publicKey });
+        }
 
         // Login
         [AllowAnonymous]

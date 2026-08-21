@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 import { Lock, Mail, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../../components/LanguageSelector';
+import { useEffect } from 'react';
+import api from '../../api/axios';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -13,11 +15,19 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  useEffect(() => {
+    try {
+      const response = api.get("/users/RSAPublicKey").then((response) => {
+        console.log(response.data)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
     try {
       await login(email, password);
       toast.success(t('login.success'));
@@ -32,7 +42,7 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-cbe-light flex flex-col justify-center items-center p-4 relative">
       <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
-        <button 
+        <button
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-gray-600 hover:text-cbe-purple font-medium transition-colors"
         >

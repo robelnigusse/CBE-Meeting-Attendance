@@ -1,0 +1,49 @@
+name: mobileapp
+description: "CBE Meeting Attendance mobile app."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management
+  provider: ^6.1.2
+
+  # Networking
+  dio: ^5.7.0
+
+  # Storage
+  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.3.2
+
+  # Localization (reuses the web app's translation JSON files)
+  easy_localization: ^3.0.7
+  intl: ^0.19.0
+
+  # Routing
+  go_router: ^14.6.2
+
+  # Media & files
+  image_picker: ^1.1.2
+  path_provider: ^2.1.4
+  open_filex: ^4.5.0
+  share_plus: ^10.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/translations/

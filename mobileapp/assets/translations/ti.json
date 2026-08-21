@@ -1,0 +1,82 @@
+{
+  "kiosk": {
+    "title": "ምዝገባ ተሳትፎ ኣኼባ",
+    "subtitle": "ባንኪ ንግዲ ኢትዮጵያ",
+    "employeeIdLabel": "መፍለዪ ቁጽሪ (ID) ሰራሕተኛ",
+    "placeholder": "ንኣብነት EMP001",
+    "button": "ተሳትፎ መዝግብ",
+    "buttonProcessing": "ኣብ መስርሕ ኣሎ...",
+    "success": "ተሳትፎ ብዓወት ተመዝጊቡ ኣሎ! ናብቲ ኣኼባ ክትኣትዉ ትኽእሉ ኢኹም።",
+    "error": "ተሳትፎ ኣብ ምምዝጋብ ጌጋ ኣጋጢሙ። በጃኹም ዳግማይ ይፈትኑ ወይ ምስ ደገፍቲ ይራኸቡ።",
+    "adminPortal": "ፖርታል ኣመሓዳሪ"
+  },
+  "login": {
+    "backToKiosk": "ናብ ኪዮስክ ተመለስ",
+    "title": "ፖርታል ኣመሓዳሪ",
+    "subtitle": "ኣኼባታትን ተሳተፍትን ንምምሕዳር እቶ",
+    "emailLabel": "ኣድራሻ ኢመይል",
+    "passwordLabel": "ቃለ ምስጢር",
+    "button": "እቶ",
+    "buttonLoading": "ኣብ ምእታው ኣሎ...",
+    "success": "ብዓወት ኣቲኹም"
+  },
+  "layout": {
+    "dashboard": "ዳሽቦርድ",
+    "employees": "ሰራሕተኛታት",
+    "users": "ተጠቀምቲ ሲስተም",
+    "welcome": "እንቋዕ ብደሓን መጻእኩም,",
+    "logout": "ውጻእ",
+    "title": "ኣመሓዳሪ CBE"
+  },
+  "dashboard": {
+    "totalEmployees": "ጠቕላላ ሰራሕተኛታት",
+    "todayAttendance": "ናይ ሎሚ ተሳትፎ",
+    "morning": "ንጉሆ (ቅድሚ ፍርቂ መዓልቲ)",
+    "afternoon": "ድሕሪ ቐትሪ",
+    "todayAttendees": "ናይ ሎሚ ተሳተፍቲ",
+    "employee": "ሰራሕተኛ",
+    "dateAndTime": "ዕለትን ሰዓትን",
+    "status": "ኩነታት",
+    "present": "ተረኺቡ",
+    "noAttendees": "ንሎሚ ዝተመዝገበ ተሳታፋይ የለን።",
+    "exportReports": "ጸብጻባት ኣውጽእ",
+    "csv": "ጸብጻብ CSV",
+    "excel": "ጸብጻብ Excel",
+    "pdf": "ጸብጻብ PDF"
+  },
+  "employees": {
+    "title": "ሰራሕተኛታት",
+    "subtitle": "ዝርዝር ኩሎም ኣብ ኣኼባ ክሳተፉ ዝኽእሉ ሰራሕተኛታት።",
+    "addBtn": "ሰራሕተኛ ኣእቱ",
+    "tableEmp": "ሰራሕተኛ",
+    "tableDiv": "ክፍሊ / ዲፓርትመንት",
+    "tableContact": "ርክብ",
+    "noEmp": "ዝኾነ ሰራሕተኛ ኣይተረኽበን። ንምጅማር ሓደ ኣእቱ።",
+    "editTitle": "ሰራሕተኛ ኣመዓራርይ",
+    "addTitle": "ሓዱሽ ሰራሕተኛ ኣእቱ",
+    "empId": "ID ሰራሕተኛ",
+    "fullName": "ምሉእ ስም",
+    "jobTitle": "መዓርግ ስራሕ",
+    "phone": "ቁጽሪ ስልኪ",
+    "division": "ክፍሊ",
+    "department": "ዲፓርትመንት",
+    "cancel": "ሰርዝ",
+    "save": "ሰራሕተኛ መዝግብ"
+  },
+  "users": {
+    "title": "ተጠቀምቲ ሲስተም",
+    "subtitle": "ሲስተም ንምምሕዳር ፍቓድ ዘለዎም ኣመሓደርቲ።",
+    "addBtn": "ኣመሓዳሪ ኣእቱ",
+    "tableAccount": "ኢመይል / ኣካውንት",
+    "tableRoles": "ሓላፍነት",
+    "tableLinkedId": "ዝተኣሳሰረ ID ሰራሕተኛ",
+    "addTitle": "ሓዱሽ ኣመሓዳሪ መዝግብ",
+    "email": "ኣድራሻ ኢመይል",
+    "password": "ቃለ ምስጢር",
+    "passwordHint": "ብውሕዱ 6 ፊደላት ክኸውን ኣለዎ፣ ምስ 1 ዓብይ ፊደልን 1 ንእሽቶ ፊደልን።",
+    "linkedId": "ዝተኣሳሰረ ID ሰራሕተኛ",
+    "linkedIdHint": "ኣብ ሲስተም ምስ ዘሎ ID ሰራሕተኛ ዝሰማማዕ ክኸውን ኣለዎ።",
+    "cancel": "ሰርዝ",
+    "register": "ተጠቃማይ መዝግብ"
+  }
+}

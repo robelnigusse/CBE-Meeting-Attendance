@@ -17,30 +17,32 @@ export const AuthProvider = ({ children }) => {
     // Check if user is logged in on mount
     const storedUser = localStorage.getItem('user');
     const token = localStorage.getItem('accessToken');
-    
+
     if (storedUser && token) {
       setUser(JSON.parse(storedUser));
     }
     setLoading(false);
   }, []);
 
+
+
   const login = async (email, password) => {
     const response = await api.post('/users/login', { email, password });
-    
+
     // Check if the backend ApiResponse indicates success
     if (!response.data.success) {
       throw new Error(response.data.message || 'Invalid login credentials');
     }
 
-    const { token, user: userData } = response.data.data; 
-    
+    const { token, user: userData } = response.data.data;
+
     localStorage.setItem('accessToken', token);
-    
+
     const loggedUser = {
-        ...userData,
-        roles: userData.roles || ['Admin'] 
+      ...userData,
+      roles: userData.roles || ['Admin']
     };
-    
+
     localStorage.setItem('user', JSON.stringify(loggedUser));
     setUser(loggedUser);
     return response.data;
