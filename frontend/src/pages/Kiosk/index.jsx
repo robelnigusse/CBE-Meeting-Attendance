@@ -19,21 +19,55 @@ export default function Kiosk() {
 
     setLoading(true);
     setStatus(null);
-    try {
-      // API call to take attendance
-      const response = await api.post('/attendance', { employeeId });
-      setStatus('success');
-      toast.success(response.data.message || t('kiosk.success'));
-      setEmployeeId('');
-      
-      // Reset status after a few seconds
-      setTimeout(() => setStatus(null), 3000);
-    } catch (error) {
-      setStatus('error');
-      toast.error(error.response?.data?.message || t('kiosk.error'));
-    } finally {
+
+    if (!navigator.geolocation) {
+      toast.error('Geolocation is not supported by your browser.');
       setLoading(false);
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          // API call to take attendance
+          const response = await api.post('/attendance', { 
+            employeeId, 
+            latitude, 
+            longitude 
+          });
+          setStatus('success');
+          toast.success(response.data.message || t('kiosk.success'));
+          setEmployeeId('');
+          
+          // Reset status after a few seconds
+          setTimeout(() => setStatus(null), 3000);
+        } catch (error) {
+          setStatus('error');
+          toast.error(error.response?.data?.message || t('kiosk.error'));
+        } finally {
+          setLoading(false);
+        }
+      },
+      (error) => {
+        setStatus('error');
+        if (error.code === error.PERMISSION_DENIED) {
+          toast.error('Location permission denied. Please allow location access to take attendance.');
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          toast.error('Location information is unavailable.');
+        } else if (error.code === error.TIMEOUT) {
+          toast.error('The request to get user location timed out.');
+        } else {
+          toast.error('An unknown error occurred while retrieving location.');
+        }
+        setLoading(false);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
   };
 
   return (

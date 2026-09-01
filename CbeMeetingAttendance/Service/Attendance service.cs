@@ -4,6 +4,7 @@ using CbeMeetingAttendance.Enums;
 using CbeMeetingAttendance.Mappers;
 using CbeMeetingAttendance.Models;
 using CbeMeetingAttendance.Repositories;
+using Microsoft.Extensions.Configuration;
 
 namespace CbeMeetingAttendance.Services
 {
@@ -11,13 +12,16 @@ namespace CbeMeetingAttendance.Services
     {
         private readonly AttendanceRepository _attendanceRepository;
         private readonly EmployeeRepository _employeeRepository;
+        private readonly IConfiguration _configuration;
 
         public AttendanceService(
             AttendanceRepository attendanceRepository,
-            EmployeeRepository employeeRepository)
+            EmployeeRepository employeeRepository,
+            IConfiguration configuration)
         {
             _attendanceRepository = attendanceRepository;
             _employeeRepository = employeeRepository;
+            _configuration = configuration;
         }
 
         // Check Attendance
@@ -60,9 +64,9 @@ namespace CbeMeetingAttendance.Services
         }
 
         // Take Attendance
-        public async Task<ApiResponse<AttendanceResponseDto>> TakeAttendanceAsync(string employeeId)
+        public async Task<ApiResponse<AttendanceResponseDto>> TakeAttendanceAsync(AttendanceRequestDto dto)
         {
-            var employee = await _employeeRepository.GetByEmployeeIdAsync(employeeId);
+            var employee = await _employeeRepository.GetByEmployeeIdAsync(dto.EmployeeId);
 
             if (employee == null)
             {
@@ -70,6 +74,29 @@ namespace CbeMeetingAttendance.Services
                 {
                     Success = false,
                     Message = "Employee not found."
+                };
+            }
+
+            if (!dto.Latitude.HasValue || !dto.Longitude.HasValue)
+            {
+                return new ApiResponse<AttendanceResponseDto>
+                {
+                    Success = false,
+                    Message = "Location coordinates are required."
+                };
+            }
+
+            double configLat = _configuration.GetValue<double>("AttendanceLocation:Latitude");
+            double configLon = _configuration.GetValue<double>("AttendanceLocation:Longitude");
+            double configRadius = _configuration.GetValue<double>("AttendanceLocation:RadiusMeters");
+            Console.WriteLine($"configLat: {configLat}, configLon: {configLon}, configRadius: {configRadius}");
+            double distance = CalculateDistance(dto.Latitude.Value, dto.Longitude.Value, configLat, configLon);
+            if (distance > configRadius)
+            {
+                return new ApiResponse<AttendanceResponseDto>
+                {
+                    Success = false,
+                    Message = "You are outside the allowed attendance location."
                 };
             }
 
@@ -117,6 +144,22 @@ namespace CbeMeetingAttendance.Services
             return DateTime.Now.Hour < 12
                 ? Session.Morning
                 : Session.Afternoon;
+        }
+
+        private double CalculateDistance(double lat1, double lon1, double lat2, double lon2)
+        {
+            var R = 6371e3; // metres
+            var p1 = lat1 * Math.PI / 180; // φ, λ in radians
+            var p2 = lat2 * Math.PI / 180;
+            var dp = (lat2 - lat1) * Math.PI / 180;
+            var dl = (lon2 - lon1) * Math.PI / 180;
+
+            var a = Math.Sin(dp / 2) * Math.Sin(dp / 2) +
+                    Math.Cos(p1) * Math.Cos(p2) *
+                    Math.Sin(dl / 2) * Math.Sin(dl / 2);
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            return R * c; // in metres
         }
     }
 }

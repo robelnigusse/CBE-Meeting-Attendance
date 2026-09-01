@@ -5,10 +5,14 @@ class AttendanceService extends BaseService {
   /// POST /attendance — 200 on success; 400 with a message on
   /// "Employee not found." / "Attendance already taken." (surfaced as
   /// [ApiException] via [send]).
-  Future<AttendanceResult> takeAttendance(String employeeId) async {
+  Future<AttendanceResult> takeAttendance(String employeeId, double latitude, double longitude) async {
     final res = await send(() => dio.post(
           '/attendance',
-          data: {'employeeId': employeeId},
+          data: {
+            'employeeId': employeeId,
+            'latitude': latitude,
+            'longitude': longitude,
+          },
         ));
     return AttendanceResult.fromJson((res.data['data'] as Map).cast<String, dynamic>());
   }

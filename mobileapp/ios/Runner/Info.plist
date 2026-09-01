@@ -52,5 +52,7 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to your photos to set employee and profile pictures.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to your location to verify attendance.</string>
 </dict>
 </plist>

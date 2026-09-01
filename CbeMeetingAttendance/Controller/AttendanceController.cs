@@ -33,7 +33,7 @@ namespace CbeMeetingAttendance.Controllers
         public async Task<IActionResult> TakeAttendance(AttendanceRequestDto dto)
         {
             var result =
-                await _attendanceService.TakeAttendanceAsync(dto.EmployeeId);
+                await _attendanceService.TakeAttendanceAsync(dto);
 
             if (!result.Success)
                 return BadRequest(result);
