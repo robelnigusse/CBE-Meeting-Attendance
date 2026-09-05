@@ -8,6 +8,8 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: "CbeMeetingPass123!"
+    volumes:
+      - sqldata:/var/opt/mssql
     ports:
       - "1433:1433"
     healthcheck:
@@ -23,6 +25,7 @@ services:
       dockerfile: Dockerfile
     container_name: cbebackend
     environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
       ConnectionStrings__DefaultConnection: "Server=sqldb;Database=CbeMeetingAttendance;User Id=sa;Password=CbeMeetingPass123!;TrustServerCertificate=True;"
     ports:
       - "8080:8080"
@@ -39,3 +42,6 @@ services:
       - "80:80"
     depends_on:
       - api
+
+volumes:
+  sqldata:
