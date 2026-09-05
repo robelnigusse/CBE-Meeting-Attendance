@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5157/api',
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -34,8 +34,8 @@ api.interceptors.response.use(
           throw new Error('No refresh token available');
         }
 
-        // Attempt refresh
-        const { data } = await axios.post('http://localhost:8080/api/users/refresh', {
+        // Attempt refresh (same-origin, proxied by nginx/vite dev server)
+        const { data } = await axios.post('/api/users/refresh', {
           token: refreshToken
         });
 

@@ -25,6 +25,7 @@
 # Logs
 *.log
 **/logs/
+opencode.json 
 
 # ==========================================
 # ASP.NET / Environment / Secrets
