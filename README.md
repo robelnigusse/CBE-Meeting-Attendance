@@ -15,12 +15,6 @@ The CBE Meeting Attendance System digitizes and simplifies the process of employ
 - **Data Export:** Generate and export attendance reports in PDF format.
 - **Multi-Platform Access:** Accessible via Web Dashboard (Admins) and Mobile App (Employees/Users).
 
-## Screenshots
-
-| Web Dashboard | Mobile App Check-in |
-| :---: | :---: |
-| *(Placeholder)* | *(Placeholder)* |
-
 ## Tech Stack
 
 **Backend**
